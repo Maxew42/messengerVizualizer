@@ -92,7 +92,7 @@ def plotTimeArea(df, timeArea, ax):
     return ax
 
 
-def loadFacebookDf(filename):
+def loadFacebookDf(dataDict):
     df = pd.DataFrame(columns={"sender", "message", "time",
                       "messageWordLength", "messageCharacterLength", "type"})
     dfReactions = pd.DataFrame(
@@ -100,12 +100,13 @@ def loadFacebookDf(filename):
     threadInfo = {}
 
     cpt = 0
-    path_to_clean_message = "../cleanData/"
-    paths_to_files = glob.glob(
-        path_to_clean_message + "/" + filename + "/" + "message_*.json")
+    #path_to_clean_message = "../cleanData/"
+    #paths_to_files = glob.glob(
+    #    path_to_clean_message + "/" + filename + "/" + "message_*.json")
 
-    for filePath in paths_to_files:
-        data = loadFacebookJson(filePath)
+    for key in sorted(dataDict):
+        data = dataDict[key]
+        print(key)
         if cpt == 0:
 
             nbParticipants = len(data['participants'])
@@ -629,7 +630,7 @@ def plotSpiderProfile(df, dfReactions,dfGrouped, threadInfo, sender):
     r=[impact,reactivity,engagement],
     theta=['impact','reactivity','engagement']))
 
-    fig = px.line_polar(df1, r='r', theta='theta', line_close=True,range_r =[0,6],title='Participant fingerprint',line_shape = 'spline')
+    fig = px.line_polar(df1, r='r', theta='theta', line_close=True,range_r =[0,6.1],title='Participant fingerprint',line_shape = 'spline')
 
     fig.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',

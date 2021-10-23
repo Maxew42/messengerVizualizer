@@ -14,7 +14,6 @@ from utils.messenger_data_processing import *
 #   Python Version: 3.1
 #
 ###
-
 st.markdown("# Messenger Statistics Viewer")
 st.markdown('##### *by [Maximilien Dufau](https://www.linkedin.com/in/maximilien-dufau/), source code available [here](https://github.com/Maxew42/messengerVizualizer) !*')
 
@@ -30,13 +29,23 @@ if 'loaded' not in st.session_state.keys():
 plt.style.use('default')
 
 #DEV : should be delete and replaced by file upload before sending this in production
-def file_selector(folder_path='../cleanData/'):
-    filenames = os.listdir(folder_path)
-    selected_filename = st.selectbox('Select a file', filenames)
-    return os.path.join(folder_path, selected_filename)
+# def file_selector(folder_path='../cleanData/'):
+#     filenames = os.listdir(folder_path)
+#     selected_filename = st.selectbox('Select a file', filenames)
+#     return os.path.join(folder_path, selected_filename)
+#filename = file_selector()
 
+uploaded_files = st.file_uploader("Select your json messages files",type = "json", accept_multiple_files=True,help='Refer to the provided tutorial if needed')
+#st.write(len(uploaded_files))
+dataDict = {}
+for uploaded_file in uploaded_files:
+    # Massively inspired by the work of Luksan on StackOverflow (https://stackoverflow.com/users/1889274/luksan)
+    fix_mojibake_escapes = partial(   
+        re.compile(rb'\\u00([\da-f]{2})').sub,
+        lambda m: bytes.fromhex(m.group(1).decode()))
+    repaired = fix_mojibake_escapes(uploaded_file.read())
+    dataDict[uploaded_file.name] = json.loads(repaired.decode('utf8'))
 
-filename = file_selector()
 loaded = False
 
 
@@ -48,10 +57,10 @@ def loadFacebookDfCached(filename):
 loadButton = st.button("Load file")
 if loadButton or st.session_state['loaded']:
 
-    if not st.session_state['loaded'] or filename != st.session_state['filename']:
-        df, threadInfo, dfReactions = loadFacebookDf(filename)
+    if not st.session_state['loaded']:
+        df, threadInfo, dfReactions = loadFacebookDf(dataDict)
+        #df, threadInfo, dfReactions = loadFacebookDf(filename)
         dfGrouped = getDfGrouped(df)
-        st.session_state['filename'] = filename
         st.session_state['df'] = df
         st.session_state['threadInfo'] = threadInfo
         st.session_state['dfReactions'] = dfReactions
