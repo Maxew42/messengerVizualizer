@@ -2,6 +2,7 @@ os
 numpy
 re
 pandas
+streamlit
 json
 functools
 glob
