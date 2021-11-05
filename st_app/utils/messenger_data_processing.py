@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
 import plotly.express as px
-
+import nltk
+from nltk.corpus import stopwords
 
 import matplotlib.font_manager as font_manager
 #font = TTFont('../ressources/font/seguiemj.ttf')
@@ -217,8 +218,6 @@ def plotEmojiUsageDistribution(df, emojiSet=emojiSet):
 
 
 def filterText(df):
-    import nltk
-    from nltk.corpus import stopwords
     nltk.download('stopwords')
     ownSpecificWords = ['vraiment', 'pense', 'coup','tous','rien','aujourd','quelqu','mettre','seul','cas','bon'
     ,'hui','user','m','doit','dire','crois','normal','dis','semble','output','celui', 'https://', 'disponible sondage', 'disponible', 'https', 'dit', 'déjà', 'truc', 'coup', 'juste', 'comme', 'être', 'donc', 'après',
