@@ -9,6 +9,10 @@ import seaborn as sns
 from wordcloud import WordCloud
 import plotly.express as px
 
+
+import matplotlib.font_manager as font_manager
+#font = TTFont('../ressources/font/seguiemj.ttf')
+EMOJI_FONT = font_manager.FontProperties(fname='../ressources/font/seguiemj.ttf')
 ### Configuration constants ###
 # DEV : should be fetched from text file
 
@@ -295,19 +299,19 @@ def plotGeneralInfo(df, threadInfo):
                transform=plt.gcf().transFigure)
 
     ax[1].text(0.58, 0.60, list(orderedEmojiCount.keys())[0], fontsize=60,
-               transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+               transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT )
     ax[1].text(0.603, 0.55, '1th', fontsize=20, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax[1].text(0.68, 0.60, list(orderedEmojiCount.keys())[1], fontsize=50,
-               transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+               transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT)
     ax[1].text(0.696, 0.55, '2nd', fontsize=20, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax[1].text(0.78, 0.60, list(orderedEmojiCount.keys())[2], fontsize=40,
-               transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+               transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT)
     ax[1].text(0.794, 0.55, '3rd', fontsize=20, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax[1].text(0.57, 0.47, threadInfo['nbMessages'],
                fontsize=36, transform=plt.gcf().transFigure)
@@ -380,20 +384,20 @@ def plotParticipantSummary(df, dfReactions, sender):
 
     if list(orderedEmojiCount.values())[0] != 0:
         ax[1].text(0.58, 0.60, list(orderedEmojiCount.keys())[0], fontsize=60,
-                   transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+                   transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT)
         ax[1].text(0.603, 0.55, '1th', fontsize=20, transform=plt.gcf(
-        ).transFigure, fontproperties='Segoe UI Emoji')
+        ).transFigure, fontproperties=EMOJI_FONT)
 
         if list(orderedEmojiCount.values())[1] != 0:
             ax[1].text(0.68, 0.60, list(orderedEmojiCount.keys())[
-                       1], fontsize=50, transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+                       1], fontsize=50, transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT)
             ax[1].text(0.696, 0.55, '2nd', fontsize=20, transform=plt.gcf(
-            ).transFigure, fontproperties='Segoe UI Emoji')
+            ).transFigure, fontproperties=EMOJI_FONT)
             if list(orderedEmojiCount.values())[2] != 0:
                 ax[1].text(0.78, 0.60, list(orderedEmojiCount.keys())[
-                           2], fontsize=40, transform=plt.gcf().transFigure, fontproperties='Segoe UI Emoji')
+                           2], fontsize=40, transform=plt.gcf().transFigure, fontproperties=EMOJI_FONT)
                 ax[1].text(0.794, 0.55, '3rd', fontsize=20, transform=plt.gcf(
-                ).transFigure, fontproperties='Segoe UI Emoji')
+                ).transFigure, fontproperties=EMOJI_FONT)
 
     ax[1].text(0.57, 0.47, dfSender.shape[0], fontsize=36,
                transform=plt.gcf().transFigure)
@@ -472,43 +476,43 @@ def plotMostReaction(df, dfReactions, threadInfo):
     nameGrossSize = 16
 
     ax.text(xFun, yEmoji, '❤️', fontsize=emojiSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun + xOffset, yEmoji, '👍', fontsize=emojiSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun + 2*xOffset, yEmoji, '😆', fontsize=emojiSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun-centeringOffset, yEmoji-yOffset, ratioLove.loc[0, 'messageSender'], fontsize=nameSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun-centeringOffset+centeringOffset2, yEmoji-yOffset - yMiniOffset, ratioLove.loc[1, 'messageSender'], fontsize=name2Size, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun-centeringOffset + xOffset, yEmoji-yOffset, ratioInformation.loc[0, 'messageSender'], fontsize=nameSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun-centeringOffset + xOffset+1.2*centeringOffset2, yEmoji-yOffset - yMiniOffset, ratioInformation.loc[1, 'messageSender'], fontsize=name2Size, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun + centeringOffset + 2 * xOffset, yEmoji-yOffset, ratioFun.loc[0, 'messageSender'], fontsize=nameSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun + centeringOffset + 2 * xOffset+0.7*centeringOffset2, yEmoji-yOffset - yMiniOffset, ratioFun.loc[1, 'messageSender'], fontsize=name2Size, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun+0.03, yEmoji-yEmoji2Offset, '❤️', fontsize=emojiSize*ratioReducEmoji, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun+0.016, yEmoji-yEmoji2Offset-yMiniOffset, love.loc[0, 'messageSender'], fontsize=nameGrossSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun + xOffset+0.03, yEmoji-yEmoji2Offset, '👍', fontsize=emojiSize*ratioReducEmoji, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun + xOffset+0.016, yEmoji-yEmoji2Offset-yMiniOffset, information.loc[0, 'messageSender'], fontsize=nameGrossSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.text(xFun + 2*xOffset+0.03, yEmoji-yEmoji2Offset, '😆', fontsize=emojiSize*ratioReducEmoji, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
     ax.text(xFun + 2*xOffset+0.016, yEmoji-yEmoji2Offset-yMiniOffset, fun.loc[0, 'messageSender'], fontsize=nameGrossSize, transform=plt.gcf(
-    ).transFigure, fontproperties='Segoe UI Emoji')
+    ).transFigure, fontproperties=EMOJI_FONT)
 
     ax.set_title(
         "Participants with the most reactions weighted by the number of messages", size=20)
