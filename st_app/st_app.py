@@ -36,8 +36,10 @@ plt.style.use('default')
 #filename = file_selector()
 
 uploaded_files = st.file_uploader("Select your json messages files",type = "json", accept_multiple_files=True,help='Refer to the provided tutorial if needed')
+st.markdown("Don't know what to upload ? Check out this [tutorial](https://github.com/Maxew42/messengerVizualizer/blob/main/README.md)")
 #st.write(len(uploaded_files))
 dataDict = {}
+
 for uploaded_file in uploaded_files:
     # Massively inspired by the work of Luksan on StackOverflow (https://stackoverflow.com/users/1889274/luksan)
     fix_mojibake_escapes = partial(   
