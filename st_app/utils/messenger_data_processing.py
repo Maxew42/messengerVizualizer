@@ -9,10 +9,11 @@ import seaborn as sns
 from wordcloud import WordCloud
 import plotly.express as px
 
-
+print(os.listdir())
+print(os.listdir("messengervizualizer"))
 import matplotlib.font_manager as font_manager
 #font = TTFont('../ressources/font/seguiemj.ttf')
-EMOJI_FONT = font_manager.FontProperties(fname='ressources/font/seguiemj.ttf')
+EMOJI_FONT = font_manager.FontProperties(fname='/st_app/ressources/font/seguiemj.ttf')
 ### Configuration constants ###
 # DEV : should be fetched from text file
 
