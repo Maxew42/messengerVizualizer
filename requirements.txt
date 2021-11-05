@@ -3,8 +3,8 @@ regex
 pandas
 streamlit
 functools
-glob
-matplotlib
+glob2==0.7
+matplotlib==3.4.2
 seaborn==0.11.1
 wordcloud==1.8.1
-plotly
+plotly==4.14.3
