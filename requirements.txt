@@ -1,5 +1,5 @@
 numpy
-re
+regex
 pandas
 streamlit
 json
