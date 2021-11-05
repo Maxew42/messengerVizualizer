@@ -1,4 +1,3 @@
-os
 numpy
 re
 pandas
@@ -7,6 +6,6 @@ json
 functools
 glob
 matplotlib
-seaborn
-wordcloud
+seaborn==0.11.1
+wordcloud==1.8.1
 plotly
