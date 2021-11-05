@@ -2,7 +2,6 @@ numpy
 regex
 pandas
 streamlit
-json
 functools
 glob
 matplotlib
