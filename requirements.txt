@@ -2,7 +2,6 @@ numpy
 regex
 pandas
 streamlit
-functools
 glob2==0.7
 matplotlib==3.4.2
 seaborn==0.11.1
