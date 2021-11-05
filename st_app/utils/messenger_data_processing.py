@@ -12,7 +12,7 @@ import plotly.express as px
 
 import matplotlib.font_manager as font_manager
 #font = TTFont('../ressources/font/seguiemj.ttf')
-EMOJI_FONT = font_manager.FontProperties(fname='../ressources/font/seguiemj.ttf')
+EMOJI_FONT = font_manager.FontProperties(fname='ressources/font/seguiemj.ttf')
 ### Configuration constants ###
 # DEV : should be fetched from text file
 
@@ -238,7 +238,7 @@ def filterText(df):
 
 def plotWordCloud(filtered_text):
     word_cloud = WordCloud(normalize_plurals=False, stopwords=['oui'], max_words=150, colormap='cividis', min_font_size=1,
-                           background_color="white", width=1500, height=800, font_path='../ressources/font/coolvetica rg.ttf').generate(filtered_text)
+                           background_color="white", width=1500, height=800, font_path='ressources/font/coolvetica rg.ttf').generate(filtered_text)
     fig = plt.figure(figsize=(19, 19))  # 'RdPu' 'cividis'
     plt.imshow(word_cloud)
     plt.axis("off")
